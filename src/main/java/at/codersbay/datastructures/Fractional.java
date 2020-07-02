@@ -13,6 +13,10 @@ public class Fractional {
 
     public Fractional(Integer numerator, Integer denominator) {
         // TODO implement to fix tests in FractionalTest1
+
+        if (numerator == null || denominator == null || denominator == 0) {
+            throw new IllegalArgumentException("numerator should not be null and denominator should not be null or 0");
+        }
         this.numerator = numerator;
         this.denominator = denominator;
     }
@@ -29,7 +33,7 @@ public class Fractional {
 
     public Float asFloat() {
         // TODO implement to fix tests in FractionalTest2
-        return Float.valueOf(numerator / denominator);
+        return Float.valueOf(numerator) / Float.valueOf(denominator);
     }
 
     @Override
@@ -39,11 +43,14 @@ public class Fractional {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        // if (this == o) return true;
+        // if (o == null || getClass() != o.getClass()) return false;
         Fractional that = (Fractional) o;
-        return Objects.equals(numerator, that.numerator) &&
-                Objects.equals(denominator, that.denominator);
+        if (Objects.equals((Float.valueOf(numerator) / Float.valueOf(denominator)), (Float.valueOf(that.numerator) / Float.valueOf(that.denominator)))) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public Fractional multiply(Fractional other) {
