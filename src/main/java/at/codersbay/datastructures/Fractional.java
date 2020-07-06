@@ -46,11 +46,7 @@ public class Fractional {
         // if (this == o) return true;
         // if (o == null || getClass() != o.getClass()) return false;
         Fractional that = (Fractional) o;
-        if (Objects.equals((Float.valueOf(numerator) / Float.valueOf(denominator)), (Float.valueOf(that.numerator) / Float.valueOf(that.denominator)))) {
-            return true;
-        } else {
-            return false;
-        }
+        return Objects.equals(this.asFloat(), that.asFloat());
     }
 
     public Fractional multiply(Fractional other) {
